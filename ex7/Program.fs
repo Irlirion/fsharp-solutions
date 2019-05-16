@@ -5,6 +5,8 @@ let vat n x = x + float n * x / 100.
 let unvat n x = x * 100. /  float (n + 100)
 
 // 20.3.3
-let rec min f = fun n ->
-    if f(n) = 0 then n
-    else min f (n + 1)
+let rec min f =
+    let mutable n = 0
+    while f(n) <> 0 do
+        n <- n + 1
+    n
