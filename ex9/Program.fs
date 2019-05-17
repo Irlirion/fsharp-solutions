@@ -7,7 +7,7 @@ let get_copper all =
 
 let get_silver all =
     int (float all / 12.) % 20
-        
+
 let get_gold all =
     int (float all / 240.)
 
