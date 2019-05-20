@@ -8,7 +8,7 @@ let rec sum (p, xs) =
     | _ -> 0
 
 // 40.2.1
-let rec count (xs, n) =
+let rec count (xs: list<int>, n) =
     match xs with
     | head :: tail when head < n -> count (tail, n)
     | head :: _ when head > n -> 0
@@ -17,7 +17,7 @@ let rec count (xs, n) =
     | [] -> 0
 
 // 40.2.2
-let rec insert (xs, n) =
+let rec insert (xs: list<int>, n) =
     match xs with
     | head :: tail when head >= n -> n :: head :: tail
     | head :: tail when head < n -> head :: insert (tail, n)
@@ -65,7 +65,7 @@ let rec smallest =
     | head :: tail -> iter (tail, head)
 
 // 40.3.2
-let rec delete (n, xs) =
+let rec delete (n, xs: list<int>) =
     match xs with
     | head :: tail when head = n -> tail
     | head :: tail -> head :: delete (n, tail)
