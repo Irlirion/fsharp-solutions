@@ -24,7 +24,7 @@ let rec insert (xs, n) =
     | _ -> n :: xs
 
 // 40.2.3
-let rec intersect (xs1, xs2) =
+let rec intersect (xs1: list<int>, xs2: list<int>) =
     match (xs1, xs2) with
     | (head1 :: tail1, head2 :: _) when head1 < head2 -> intersect (tail1, xs2)
     | (head1 :: _, head2 :: tail2) when head1 > head2 -> intersect (xs1, tail2)
@@ -33,7 +33,7 @@ let rec intersect (xs1, xs2) =
     | _ -> []
 
 // 40.2.4
-let rec plus (xs1, xs2) =
+let rec plus (xs1: list<int>, xs2: list<int>) =
     match (xs1, xs2) with
     | (head1 :: tail1, head2 :: _) when head1 < head2 -> head1 :: plus (tail1, xs2)
     | (head1 :: _, head2 :: tail2) when head1 > head2 -> head2 :: plus (xs1, tail2)
@@ -44,7 +44,7 @@ let rec plus (xs1, xs2) =
     | _ -> []
 
 // 40.2.5
-let rec minus (xs1, xs2) =
+let rec minus (xs1: list<int>, xs2: list<int>) =
     match (xs1, xs2) with
     | (head1 :: tail1, head2 :: _) when head1 < head2 -> head1 :: minus (tail1, xs2)
     | (head1 :: _, head2 :: _) when head1 > head2 -> [ head1 ]
@@ -54,7 +54,7 @@ let rec minus (xs1, xs2) =
 
 // 40.3.1
 let rec smallest =
-    let rec iter (xs, min) =
+    let rec iter (xs: list<int>, min) =
         match xs with
         | [ x ] when x < min -> Some(x)
         | head :: tail when head < min -> iter (tail, head)
@@ -80,7 +80,8 @@ let rec sort = fun xs ->
     | _ -> []
 
 // 40.4
-let rec revrev = function
+let rec revrev = fun (xs: list<list<int>>) ->
+ match xs with
  | [] -> []
  | [ x ] -> [ List.rev x ]
  | head :: tail -> revrev tail @ [ List.rev head ]
