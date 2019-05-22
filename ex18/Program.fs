@@ -7,12 +7,13 @@ let f n =
 
 // 47.4.2
 let fibo n =
-    let mutable fib1 = 0
-    let mutable fib2 = 1
-    let mutable fibonacci = fib1
-    let f _ =
-        fibonacci <- fib1 + fib2
-        fib1 <- fib2
-        fib2 <- fibonacci
-    List.iter f [ 2..n ]
-    fibonacci
+    if n < 2 then n
+    else
+        let mutable precious = 1
+        let mutable current = 1
+        let mutable next = 1
+        for i = 2 to n - 1 do
+            next <- current + precious
+            precious <- current
+            current <- next
+        next
