@@ -1,9 +1,9 @@
 ﻿// 47.4.1
 let f n =
-    let mutable mul = 1
-    let g x = mul <- mul * x
+    let mul = ref 1
+    let g x = mul := !mul * x
     List.iter g [ 1..n ]
-    mul
+    !mul
 
 // 47.4.2
 let fibo n =
